@@ -3,6 +3,7 @@ const moongose = require('mongoose')
 const coachSchema = new moongose.Schema(
   {
     name: String,
+    profile_image: String,
     description: String,
     price: Number,
     Games: [String]
