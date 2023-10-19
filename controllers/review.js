@@ -15,7 +15,7 @@ exports.review_add_post = (req, res) => {
           coach
             .updateOne({ $push: { reviews: review } })
             .then(() => {
-              res.json({
+              res.send({
                 good: true
               })
             })
@@ -33,3 +33,21 @@ exports.review_add_post = (req, res) => {
       console.log('couldnt get coach error' + err)
     })
 }
+
+//  delete review
+exports.review_delete_get = (req, res) => {
+  Review.findByIdAndDelete(req.query.review_id)
+    .then(() => {
+      res.send({
+        good: true
+      })
+    })
+    .catch((err) => {
+      console.log('couldnt find review, error: ' + err)
+    })
+}
+
+/* //  edit review
+exports.review_update_post = (req, res) =>{
+  Review.findByIdAndUpdate()
+} */

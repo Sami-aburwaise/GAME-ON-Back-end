@@ -10,7 +10,7 @@ exports.coach_add_post = (req, res) => {
     .save()
     .then(() => {
       console.log('saved coach')
-      res.json({
+      res.send({
         good: true
       })
     })
@@ -26,7 +26,7 @@ exports.coach_show_get = (req, res) => {
   Coach.find()
     .populate('reviews')
     .then((coachs) => {
-      res.json(coachs)
+      res.send(coachs)
     })
     .catch((err) => {
       console.log('coulnt get coachs, error: ' + err)
