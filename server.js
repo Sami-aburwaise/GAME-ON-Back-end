@@ -12,10 +12,9 @@ app.listen(port, () => {
   console.log('listen to port ' + port)
 })
 
-
 //connect to mongoDB
 moongose
-  .connect(process.env.mongoURL, {
+  .connect(process.env.MONGODBURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
