@@ -6,6 +6,17 @@ require('dotenv').config()
 //  invoke exporess
 const app = express()
 
+//  use body-parser middleware
+app.use(express.json())
+
+//  import routes
+const reviewRouter = require('./routes/review')
+const coachRouter = require('./routes/coach')
+
+//  use routes
+app.use('/', reviewRouter)
+app.use('/', coachRouter)
+
 //listen to port
 const port = process.env.PORT
 app.listen(port, () => {
