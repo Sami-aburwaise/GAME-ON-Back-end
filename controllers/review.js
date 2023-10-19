@@ -36,7 +36,13 @@ exports.review_add_post = (req, res) => {
 
 //  delete review
 exports.review_delete_get = (req, res) => {
-  Review.findByIdAndDelete(req.query.review_id)
+  let review = Review.findById(req.query.review_id)
+  //check if user can do that
+  if (false) {
+    return
+  }
+  review
+    .deleteOne()
     .then(() => {
       res.send({
         good: true
@@ -47,7 +53,22 @@ exports.review_delete_get = (req, res) => {
     })
 }
 
-/* //  edit review
-exports.review_update_post = (req, res) =>{
-  Review.findByIdAndUpdate()
-} */
+//  edit review
+exports.review_update_post = (req, res) => {
+  let review = Review.findById(req.query.review_id)
+  //check if user can do that
+  if (false) {
+    return
+  }
+  review
+    .updateOne(req.body)
+    .then(() => {
+      console.log('review updated')
+      res.send({
+        good: true
+      })
+    })
+    .catch((err) => {
+      console.log('couldnt edit review, error:' + err)
+    })
+}
