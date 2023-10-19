@@ -11,11 +11,7 @@ const reviewSchema = new moongose.Schema(
     /*     user: {
       type: moongose.Schema.Types.ObjectId,
       ref: 'User'
-    },
-    coach: {
-      type: moongose.Schema.Types.ObjectId,
-      ref: 'Coach'
-    } */
+    },*/
   },
   {
     timestamps: true

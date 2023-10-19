@@ -11,9 +11,11 @@ app.use(express.json())
 
 //  import routes
 const reviewRouter = require('./routes/review')
+const coachRouter = require('./routes/coach')
 
 //  use routes
 app.use('/', reviewRouter)
+app.use('/', coachRouter)
 
 //listen to port
 const port = process.env.PORT
