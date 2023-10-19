@@ -24,7 +24,21 @@ const editSession = async (req, res) => {
   }
 }
 
+const cancelSession = async (req, res) => {
+  try {
+    await Session.findByIdAndDelete(req.params.session_id)
+    res.send({
+      msg: 'Session has been canceled, refund has been processed',
+      payload: req.params.session_id,
+      status: 'Operation completed'
+    })
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   createSession,
-  editSession
+  editSession,
+  cancelSession
 }
