@@ -3,16 +3,23 @@ const express = require('express')
 const moongose = require('mongoose')
 require('dotenv').config()
 const logger = require('morgan')
+const cors = require('cors')
 
 
 //  invoke exporess
 const app = express()
 
- //  use body-parser middleware
+//  use body-parser middleware
 app.use(express.json())
 
 //  share public folder with client
 app.use(express.static('public'))
+
+//  use cors
+app.use(cors())
+
+//  use morgan
+app.use(logger('dev'))
 
 //  import routes
 const reviewRouter = require('./routes/review')
