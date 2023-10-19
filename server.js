@@ -2,10 +2,15 @@
 const express = require('express')
 const moongose = require('mongoose')
 require('dotenv').config()
+const AuthRouter = require('./routers/AuthRouter')
 
 //  invoke exporess
 const app = express()
 
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+
+app.use('/auth', AuthRouter)
 //listen to port
 const port = process.env.PORT
 app.listen(port, () => {
