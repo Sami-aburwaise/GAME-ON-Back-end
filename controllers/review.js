@@ -22,4 +22,12 @@ exports.review_add_post = (req, res) => {
 }
 
 //  get reviews
-exports.review_show_get = (res, req) => {}
+exports.review_show_get = (req, res) => {
+  Review.find(/* coach id here */)
+    .then((reviews) => {
+      res.json(reviews)
+    })
+    .catch((err) => {
+      console.log('coulnt get reviews, error: ' + err)
+    })
+}
