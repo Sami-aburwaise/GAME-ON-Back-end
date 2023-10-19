@@ -11,6 +11,9 @@ const app = express()
  //  use body-parser middleware
 app.use(express.json())
 
+//  share public folder with client
+app.use(express.static('public'))
+
 //  import routes
 const reviewRouter = require('./routes/review')
 const coachRouter = require('./routes/coach')
