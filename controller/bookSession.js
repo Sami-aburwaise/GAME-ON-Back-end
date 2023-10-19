@@ -1,6 +1,15 @@
 const { Session } = require('../Models/Session')
 
-const createSession = async (req, res) => {
+const session_show_get = async (req, res) => {
+  try {
+    const session = await Session.find({})
+    res.send(session)
+  } catch (error) {
+    throw error
+  }
+}
+
+const session_create_post = async (req, res) => {
   try {
     const session = await Session.create({ ...req.body })
     res.send(session)
@@ -10,7 +19,7 @@ const createSession = async (req, res) => {
   }
 }
 
-const editSession = async (req, res) => {
+const session_edit_post = async (req, res) => {
   try {
     const session = await Session.findByIdAndUpdate(
       req.params.session_id,
@@ -24,7 +33,7 @@ const editSession = async (req, res) => {
   }
 }
 
-const cancelSession = async (req, res) => {
+const session_delete_get = async (req, res) => {
   try {
     await Session.findByIdAndDelete(req.params.session_id)
     res.send({
@@ -38,7 +47,8 @@ const cancelSession = async (req, res) => {
 }
 
 module.exports = {
-  createSession,
-  editSession,
-  cancelSession
+  session_show_get,
+  session_create_post,
+  session_edit_post,
+  session_delete_get
 }

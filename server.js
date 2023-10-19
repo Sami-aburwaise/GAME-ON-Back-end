@@ -3,8 +3,8 @@ const express = require('express')
 const moongose = require('mongoose')
 require('dotenv').config()
 const logger = require('morgan')
-const AuthRouter = require('./routers/AuthRouter')
-const SessionRouter = require('./routers/SessionRouter')
+const AuthRouter = require('./routes/AuthRouter')
+const SessionRouter = require('./routes/SessionRouter')
 
 //  invoke exporess
 const app = express()
