@@ -61,4 +61,4 @@ When users are selecting their coach for the session, they will be able to click
 
 # Credits & Resources
 
-<!-- ![]() -->
+[Mongoose Date/Timings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
