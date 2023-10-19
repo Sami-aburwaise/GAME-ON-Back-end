@@ -4,6 +4,7 @@ const moongose = require('mongoose')
 require('dotenv').config()
 const logger = require('morgan')
 const AuthRouter = require('./routers/AuthRouter')
+const SessionRouter = require('./routers/SessionRouter')
 
 //  invoke exporess
 const app = express()
@@ -12,6 +13,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 app.use('/auth', AuthRouter)
+app.use('/book', SessionRouter)
 //listen to port
 const port = process.env.PORT
 app.listen(port, () => {
