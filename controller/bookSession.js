@@ -10,6 +10,21 @@ const createSession = async (req, res) => {
   }
 }
 
+const editSession = async (req, res) => {
+  try {
+    const session = await Session.findByIdAndUpdate(
+      req.params.session_id,
+      req.body,
+      { new: true }
+    )
+    res.send(session)
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
 module.exports = {
-  createSession
+  createSession,
+  editSession
 }
