@@ -6,22 +6,22 @@ const reviewSchema = new moongose.Schema(
       type: String,
       maxlength: [100]
     },
-    rating: Number,
+    rating: Number
 
-    user: {
+    /*     user: {
       type: moongose.Schema.Types.ObjectId,
       ref: 'User'
     },
     coach: {
       type: moongose.Schema.Types.ObjectId,
       ref: 'Coach'
-    }
+    } */
   },
   {
     timestamps: true
   }
 )
 
-const Review = mongoose.model('Review', reviewSchema)
+const Review = moongose.model('Review', reviewSchema)
 
 module.exports = { Review }
