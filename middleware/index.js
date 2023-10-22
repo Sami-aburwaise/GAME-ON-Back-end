@@ -6,7 +6,9 @@ const SALT_ROUNDS = parseInt(process.env.SALT_ROUNDS)
 const APP_SECRET = process.env.APP_SECRET
 
 const hashPassword = async (password) => {
-  let hashedPassword = await bcrypt.hash(password, SALT_ROUNDS) //This creates a hashed password using salt, salt rounds is determined in .env file
+  let hashedPassword = await bcrypt.hash(password, SALT_ROUNDS)
+  //This creates a hashed password using salt, salt rounds is determined in .env file
+  console.log(password)
   return hashedPassword
 }
 
@@ -25,7 +27,8 @@ const verifyToken = (req, res, next) => {
   const { token } = res.locals //stores token in request lifecycle state
 
   try {
-    let payload = jwt.verifyToken(token, APP_SECRET) //Checks if the token exists
+    let payload = jwt.verify(token, APP_SECRET) //Checks if the token exists
+    console.log('HHHHHHHHHHHHHHHH', payload)
 
     if (payload) {
       res.locals.payload = payload
@@ -40,7 +43,9 @@ const verifyToken = (req, res, next) => {
 
 const stripToken = (req, res, next) => {
   try {
-    const token = req.headers['authorization'].split('')[1] // splits the value and grabs [1], which is the token
+    console.log(req.headers['authorization'])
+    const token = req.headers['authorization'].split(' ')[1] // splits the value and grabs [1], which is the token
+
     if (token) {
       res.locals.token = token // if the token is there, it will be added inside the request lifecycle state
       return next()
