@@ -43,6 +43,7 @@ const signIn = async (req, res) => {
         emailAddress: user.emailAddress
       }
       let token = middleware.createToken(payload)
+
       return res.send({ user: payload, token })
     }
     res.status(401).send({ status: 'Error', msg: 'User Unauthorized' })
@@ -52,7 +53,13 @@ const signIn = async (req, res) => {
   }
 }
 
+const checkSession = async (req, res) => {
+  const { payload } = res.locals
+  res.send(payload)
+}
+
 module.exports = {
   signUp,
-  signIn
+  signIn,
+  checkSession
 }
