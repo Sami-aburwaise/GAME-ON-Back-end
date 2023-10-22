@@ -28,7 +28,6 @@ const verifyToken = (req, res, next) => {
 
   try {
     let payload = jwt.verify(token, APP_SECRET) //Checks if the token exists
-    console.log('HHHHHHHHHHHHHHHH', payload)
 
     if (payload) {
       res.locals.payload = payload
@@ -43,7 +42,6 @@ const verifyToken = (req, res, next) => {
 
 const stripToken = (req, res, next) => {
   try {
-    console.log(req.headers['authorization'])
     const token = req.headers['authorization'].split(' ')[1] // splits the value and grabs [1], which is the token
 
     if (token) {
