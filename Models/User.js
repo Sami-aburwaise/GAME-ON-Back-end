@@ -28,7 +28,8 @@ const userSchema = mongoose.Schema(
     passwordDigest: {
       type: String,
       required: true
-    }
+    },
+    sessionsId: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Session' }]
   },
   { timestamps: true }
 )
