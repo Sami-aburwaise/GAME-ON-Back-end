@@ -25,12 +25,14 @@ const reviewRouter = require('./routes/review')
 const coachRouter = require('./routes/coach')
 const AuthRouter = require('./routes/AuthRouter')
 const SessionRouter = require('./routes/SessionRouter')
+const userRouter = require('./routes/user')
 
 //  use routes
 app.use('/', reviewRouter)
 app.use('/', coachRouter)
-app.use('/auth', AuthRouter)
-app.use('/book', SessionRouter)
+app.use('/', AuthRouter)
+app.use('/', SessionRouter)
+app.use('/', userRouter)
 
 //listen to port
 const port = process.env.PORT
