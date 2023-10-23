@@ -3,7 +3,7 @@ const Session = require('../Models/Session')
 
 const user_show_get = async (req, res) => {
   try {
-    const user = await User.findById(req.query.userid).populate('sessionsId')
+    const user = await User.findById(req.query.userid)
     console.log(user)
     res.send(user)
   } catch (error) {

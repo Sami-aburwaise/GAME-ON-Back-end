@@ -2,7 +2,7 @@ const { Session } = require('../Models/Session')
 
 const session_show_get = async (req, res) => {
   try {
-    const session = await Session.find({})
+    const session = await Session.find({ userId: req.query.userId })
     res.send(session)
   } catch (error) {
     throw error
