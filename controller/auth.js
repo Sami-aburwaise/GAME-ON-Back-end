@@ -40,6 +40,8 @@ const signIn = async (req, res) => {
     if (passwordMatch) {
       let payload = {
         id: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
         emailAddress: user.emailAddress
       }
       let token = middleware.createToken(payload)
