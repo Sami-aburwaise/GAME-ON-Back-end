@@ -16,13 +16,15 @@ exports.review_add_post = (req, res) => {
             .updateOne({ $push: { reviews: review } })
             .then(() => {
               res.send({
-                msg: 'review added successfully'
+                msg: 'review added successfully',
+                status: true
               })
             })
             .catch((err) => {
               console.log('couldnt add review, error: ' + err)
               res.send({
-                msg: 'error'
+                msg: 'error',
+                status: false
               })
             })
         })
@@ -30,7 +32,8 @@ exports.review_add_post = (req, res) => {
           console.log((err) => {
             console.log('couldnt save review to DB error: ' + err)
             res.send({
-              msg: 'error'
+              msg: 'error',
+              status: false
             })
           })
         })
@@ -38,7 +41,8 @@ exports.review_add_post = (req, res) => {
     .catch((err) => {
       console.log('couldnt get coach error' + err)
       res.send({
-        msg: 'error'
+        msg: 'error',
+        status: false
       })
     })
 }
@@ -47,7 +51,7 @@ exports.review_add_post = (req, res) => {
 exports.review_delete_get = (req, res) => {
   let review = Review.findById(req.query.review_id)
   //check if user can do that
-  if (false) {
+  if (true) {
     return
   }
   review
@@ -66,7 +70,7 @@ exports.review_delete_get = (req, res) => {
 exports.review_update_post = (req, res) => {
   let review = Review.findById(req.query.review_id)
   //check if user can do that
-  if (false) {
+  if (true) {
     return
   }
   review
