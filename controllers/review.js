@@ -16,21 +16,30 @@ exports.review_add_post = (req, res) => {
             .updateOne({ $push: { reviews: review } })
             .then(() => {
               res.send({
-                good: true
+                msg: 'review added successfully'
               })
             })
             .catch((err) => {
               console.log('couldnt add review, error: ' + err)
+              res.send({
+                msg: 'error'
+              })
             })
         })
         .catch((err) => {
           console.log((err) => {
             console.log('couldnt save review to DB error: ' + err)
+            res.send({
+              msg: 'error'
+            })
           })
         })
     })
     .catch((err) => {
       console.log('couldnt get coach error' + err)
+      res.send({
+        msg: 'error'
+      })
     })
 }
 
