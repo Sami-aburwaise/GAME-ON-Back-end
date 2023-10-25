@@ -24,7 +24,12 @@ exports.coach_add_post = (req, res) => {
 //  get coachs
 exports.coach_show_get = (req, res) => {
   Coach.find()
-    .populate('reviews')
+    .populate({
+      path: 'reviews', // populate Comment
+      populate: {
+        path: 'user' // in comment, populate user
+      }
+    })
     .then((coachs) => {
       res.send(coachs)
     })
