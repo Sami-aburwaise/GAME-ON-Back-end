@@ -8,7 +8,6 @@ const APP_SECRET = process.env.APP_SECRET
 const hashPassword = async (password) => {
   let hashedPassword = await bcrypt.hash(password, SALT_ROUNDS)
   //This creates a hashed password using salt, salt rounds is determined in .env file
-  console.log(password)
   return hashedPassword
 }
 
